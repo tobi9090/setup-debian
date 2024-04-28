@@ -30,13 +30,13 @@ mkdir -p "/home/$username/Documents"
 mkdir -p "/home/$username/Projekts"
 mkdir -p "/home/$username/git-repos"
 mkdir -p "/home/$username/.config/awesome"
-
+mkdir -p "/home/$username/.config/.oh-my-bash"
 
 # Clone github repo
-cd /home/$username/
-git clone https://github.com/tobi9090/dotfiles.git
+#cd /home/$username/
+git clone https://github.com/tobi9090/dotfiles.git /home/$username/dotfiles
+git clone https://github.com/tobi9090/fonts.git /home/$username/.local/share/fonts
 chown -R $username:$username /home/$username
-rigeme
 
 # Install packges for desktop setup
 sudo apt install awesome sddm-theme-debian-maui -y
@@ -47,8 +47,8 @@ sudo dpkg-reconfigure sddm
 # Install apt
 sudo apt install tmux nitrogen stow alacritty btop rofi picom wget neofetch vim unzip -y
 
-sudo chmod +x ./setup-debian/install-nvim.sh
-sudo ./setup-debian/install-nvim.sh
+sudo chmod +x ${builddir}/install-nvim.sh
+sudo sh ${builddir}/install-nvim.sh
 
 # Install Flatpak
 sudo apt install flatpak -y
@@ -56,8 +56,8 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 flatpak install flathub org.chromium.Chromium
 
 
-# copy dotfiles
+# stow dotfiles
 cd /home/$username/dotfiles
 
 ######## HUSK at tilføje .gitconfig
-stow .
+stow -S .
