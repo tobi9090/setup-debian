@@ -14,32 +14,29 @@ apt update
 apt upgrade -y
 
 # Check if directory existence
-directorys=(
-  "/home/$username/.config/nvim"
-  "/home/$username/.config/alacritty"
-  "/home/$username/.config/btop"
-  "/home/$username/.config/rofi"
-  "/home/$username/.config/tmux"
-  "/home/$username/.config/lazygit"
-  "/home/$username/.config/nitrogen"
-  "/home/$username/.local/share/fonts"
-  "/home/$username/Pictures"
-  "/home/$username/Music"
-  "/home/$username/Videos"
-  "/home/$username/Documents"
-  "/home/$username/Projekts"
-  "/home/$username/git-repos"
-  "/home/$username/.config/awesome")
-for directory in "${directorys[@]}"; do
-  if [[ ! -d "$directory" ]]; then
-    mkdir -p directory  
-  fi 
-done
+
+mkdir -p "/home/$username/.config/nvim"
+mkdir -p "/home/$username/.config/alacritty"
+mkdir -p "/home/$username/.config/btop"
+mkdir -p "/home/$username/.config/rofi"
+mkdir -p "/home/$username/.config/tmux"
+mkdir -p "/home/$username/.config/lazygit"
+mkdir -p "/home/$username/.config/nitrogen"
+mkdir -p "/home/$username/.local/share/fonts"
+mkdir -p "/home/$username/Pictures"
+mkdir -p "/home/$username/Music"
+mkdir -p "/home/$username/Videos"
+mkdir -p "/home/$username/Documents"
+mkdir -p "/home/$username/Projekts"
+mkdir -p "/home/$username/git-repos"
+mkdir -p "/home/$username/.config/awesome"
+
 
 # Clone github repo
 cd /home/$username/
 git clone https://github.com/tobi9090/dotfiles.git
 chown -R $username:$username /home/$username
+rigeme
 
 # Install packges for desktop setup
 sudo apt install awesome sddm-theme-debian-maui -y
