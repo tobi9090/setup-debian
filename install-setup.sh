@@ -56,8 +56,8 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 flatpak install flathub org.chromium.Chromium
 
 
+mv /home/$username/.bashrc /home/$username/.oldbashrc
 # stow dotfiles
 cd /home/$username/dotfiles
 
-######## HUSK at tilføje .gitconfig
 stow -S .

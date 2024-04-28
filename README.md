@@ -1,4 +1,5 @@
 For .gitconfig
+
 [init]
 defaultBranch = main
 [user]
