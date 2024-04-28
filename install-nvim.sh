@@ -3,7 +3,7 @@
 username=$(id -u -n 1000)
 
 # Prerequisites
- apt install ninja-build gettext cmake unzip curl build-essential clang -y
+sudo apt install ninja-build gettext cmake unzip curl build-essential clang -y
 
 directory="/home/$username/git-repos"
 

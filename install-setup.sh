@@ -53,8 +53,8 @@ sudo dpkg-reconfigure sddm
 # Install apt
 sudo apt install tmux nitrogen stow alacritty btop rofi picom wget neofetch vim unzip libxcb-xfixes0-dev -y
 
-sudo chmod +x ${builddir}/install-nvim.sh
-sudo sh ${builddir}/install-nvim.sh
+chmod +x ${builddir}/install-nvim.sh
+sh ${builddir}/install-nvim.sh
 
 # Install Flatpak
 sudo apt install flatpak -y
