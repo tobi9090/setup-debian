@@ -36,6 +36,12 @@ mkdir -p "/home/$username/.config/.oh-my-bash"
 #cd /home/$username/
 git clone https://github.com/tobi9090/dotfiles.git /home/$username/dotfiles
 git clone https://github.com/tobi9090/fonts.git /home/$username/.local/share/fonts
+
+mv /home/$username/.bashrc /home/$username/.oldbashrc
+# stow dotfiles
+cd /home/$username/dotfiles
+
+stow -S .
 chown -R $username:$username /home/$username
 
 # Install packges for desktop setup
@@ -45,7 +51,7 @@ sudo apt install awesome sddm-theme-debian-maui -y
 sudo dpkg-reconfigure sddm
 
 # Install apt
-sudo apt install tmux nitrogen stow alacritty btop rofi picom wget neofetch vim unzip -y
+sudo apt install tmux nitrogen stow alacritty btop rofi picom wget neofetch vim unzip libxcb-xfixes0-dev -y
 
 sudo chmod +x ${builddir}/install-nvim.sh
 sudo sh ${builddir}/install-nvim.sh
@@ -54,10 +60,3 @@ sudo sh ${builddir}/install-nvim.sh
 sudo apt install flatpak -y
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install flathub org.chromium.Chromium
-
-
-mv /home/$username/.bashrc /home/$username/.oldbashrc
-# stow dotfiles
-cd /home/$username/dotfiles
-
-stow -S .
