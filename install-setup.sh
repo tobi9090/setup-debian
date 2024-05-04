@@ -32,44 +32,16 @@ mkdir -p "/home/$username/git-repos"
 mkdir -p "/home/$username/.config/awesome"
 mkdir -p "/home/$username/.config/.oh-my-bash"
 
-# Clone github repo
-#cd /home/$username/
-git clone https://github.com/tobi9090/dotfiles.git /home/$username/dotfiles
-git clone https://github.com/tobi9090/fonts.git /home/$username/.local/share/fonts
 
-mv /home/$username/.bashrc /home/$username/.oldbashrc
-# stow dotfiles
-cd /home/$username/dotfiles
+chmod +x ${builddir}/install-dotfiles.sh
+sh ${builddir}/install-dotfiles.sh
 
-stow -S .
-chown -R $username:$username /home/$username
-
-# Install packges for desktop setup
-sudo apt install xorg libxcb-xfixes0-dev sddm-theme-debian-maui -y
-
-cd /home/$username
-sudo apt build-dep awesome
-git clone https://github.com/awesomewm/awesome
-cd awesome
-make package
-cd build
-sudo apt install ./*.deb
-
-sudo mkdir /usr/share/xsessions
-sudo cp ${builddir}/awesome.desktop /usr/share/xsessions/
-
-# rm -rf /home/$username/awesome
-
-# Config Sddm to run on next login
-sudo dpkg-reconfigure sddm
-
-# Install apt
-sudo apt install tmux nitrogen stow alacritty btop rofi picom wget neofetch vim unzip libxcb-xfixes0-dev -y
+chmod +x ${builddir}/install-desktop.sh
+sh ${builddir}/install-desktop.sh
 
 chmod +x ${builddir}/install-nvim.sh
 sh ${builddir}/install-nvim.sh
 
-# Install Flatpak
-sudo apt install flatpak -y
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install flathub org.chromium.Chromium
+chmod +x ${builddir}/install-apps.sh
+sh ${builddir}/install-apps.sh
+
