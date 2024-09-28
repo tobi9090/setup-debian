@@ -32,6 +32,9 @@ mkdir -p "/home/$username/git-repos"
 mkdir -p "/home/$username/.config/awesome"
 mkdir -p "/home/$username/.config/.oh-my-bash"
 
+sudo cp ${builddir}/awesome.desktop /usr/share/xsessions/
+
+sudo cp ${builddir}/20-amd.conf /etc/X11/xorg.conf.d/
 
 chmod +x ${builddir}/install-dotfiles.sh
 sh ${builddir}/install-dotfiles.sh
