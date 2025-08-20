@@ -18,8 +18,15 @@ sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/
 
 sudo apt update
 
+# LazyGit
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+tar xf lazygit.tar.gz lazygit
+sudo install lazygit /usr/local/bin
+
+
 # Install apt
-sudo apt install tmux nitrogen lxappearance stow alacritty btop rofi picom wget neofetch vim unzip libxcb-xfixes0-dev network-manager wezterm pulseaudio pavucontrol pavucontrol code fzf mpv virt-manager qemu-system-x86 qemu-utils libvirt-daemon-system -y
+sudo apt install tmux nitrogen lxappearance stow alacritty btop rofi picom wget neofetch vim unzip libxcb-xfixes0-dev network-manager wezterm pulseaudio pavucontrol pavucontrol code fzf mpv virt-manager qemu-system-x86 qemu-utils libvirt-daemon-system p7zip-full xclip lua5.1 ripgrep -y
 
 sudo apt install --install-recommends winehq-stable -y
 
